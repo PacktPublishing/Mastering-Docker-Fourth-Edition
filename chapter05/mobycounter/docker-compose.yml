@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+    redis:
+        image: redis:alpine
+        volumes:
+           - redis_data:/data
+        restart: always
+    mobycounter:
+        depends_on: 
+            - redis
+        image: russmckendrick/moby-counter
+        ports:
+            - "8080:80"
+        restart: always
+       
+volumes:
+    redis_data:
