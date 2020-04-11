@@ -1,0 +1,32 @@
+version: '2.1'
+services:
+  db:
+    image: microsoft/mssql-server-windows-express
+    environment:
+      sa_password: "${SA_PASSWORD}"
+      ACCEPT_EULA: "${SQL_SERVER_ACCEPT_EULA}"
+    healthcheck:
+      test: [ "CMD", "sqlcmd", "-U", "sa", "-P", "${SA_PASSWORD}", "-Q", "select 1" ]
+      interval: 10s
+      retries: 10
+  octopus:
+    image: octopusdeploy/octopusdeploy:${OCTOPUS_VERSION}
+    environment:
+      ADMIN_USERNAME: "${OCTOPUS_ADMIN_USERNAME}"
+      ADMIN_PASSWORD: "${OCTOPUS_ADMIN_PASSWORD}"
+      DB_CONNECTION_STRING: "${DB_CONNECTION_STRING}"
+      ACCEPT_EULA: "${OCTOPUS_ACCEPT_EULA}"
+      ADMIN_EMAIL: "${ADMIN_EMAIL}"
+    ports:
+     - "1322:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    volumes:
+      - "./Repository:C:/Repository"
+      - "./TaskLogs:C:/TaskLogs"
+networks:
+  default:
+    external:
+      name: nat

@@ -1,0 +1,3 @@
+[submodule "chapter07/docker-windows-box"]
+	path = chapter07/docker-windows-box
+	url = https://github.com/StefanScherer/docker-windows-box.git
