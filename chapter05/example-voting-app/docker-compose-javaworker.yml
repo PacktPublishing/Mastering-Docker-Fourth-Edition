@@ -45,6 +45,9 @@ services:
       - "db-data:/var/lib/postgresql/data"
     networks:
       - back-tier
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+  
 
 volumes:
   db-data:
