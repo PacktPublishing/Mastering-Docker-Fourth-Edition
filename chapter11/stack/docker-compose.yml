@@ -1,0 +1,10 @@
+version: "3"
+services:
+  cluster:
+    image: russmckendrick/cluster
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 6
+      restart_policy:
+        condition: on-failure

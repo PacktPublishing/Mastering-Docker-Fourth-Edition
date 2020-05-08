@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cluster
+  name: cluster
+spec:
+  containers:
+  - image: russmckendrick/cluster
+    name: cluster
+    ports:
+    - containerPort: 80
+    resources: {}
+  restartPolicy: OnFailure
+status: {}
