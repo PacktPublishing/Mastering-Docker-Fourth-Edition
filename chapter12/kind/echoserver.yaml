@@ -1,0 +1,34 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: hello-node
+  labels:
+    app: hello-node
+spec:
+  containers:
+  - name: foo-app
+    image: k8s.gcr.io/echoserver:1.4
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-node
+spec:
+  selector:
+    app: hello-node
+  ports:
+  # Default port used by the image
+  - port: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-node-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /hello-node
+        backend:
+          serviceName: hello-node
+          servicePort: 8080
