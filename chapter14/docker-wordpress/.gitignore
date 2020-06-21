@@ -1,0 +1,5 @@
+docker-compose.png
+wordpress/mysql
+wordpress/web
+wordpress/export
+.cache
