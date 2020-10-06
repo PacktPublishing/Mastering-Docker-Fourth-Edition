@@ -9,7 +9,7 @@ This is the code repository for [Mastering Docker – Fourth Edition](https://ww
 ## What is this book about?
 Docker has been a game changer when it comes to how modern applications are deployed and created. It has now grown into a key driver of innovation beyond system administration, with a significant impact on the world of web development. Mastering Docker shows you how you can ensure that you're keeping up with the innovations it's driving and be sure you're using it to its full potential. This fourth edition not only demonstrates how to use Docker more effectively but also helps you rethink and reimagine what you can achieve with it.
 
-This book covers the following exciting features: <First 5 What you'll learn points>
+This book covers the following exciting features: 
 * Get to grips with essential Docker components and concepts
 * Discover the best ways to build, store, and distribute container images
 * Understand how Docker can fit into your development workflow
